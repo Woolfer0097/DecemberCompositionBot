@@ -3,7 +3,6 @@ from telebot import types  # для указание типов
 import random
 import config
 import os
-from dirt_tongue import is_dirt
 from datetime import datetime
 import docx
 from docx2pdf import convert
@@ -15,7 +14,6 @@ SECTION1_NAME = "ДУХОВНО-НРАВСТВЕННЫЕ ОРИЕНТИРЫ В �
 SECTION2_NAME = "СЕМЬЯ, ОБЩЕСТВО, ОТЕЧЕСТВО В ЖИЗНИ ЧЕЛОВЕКА"
 SECTION3_NAME = "ПРИРОДА И КУЛЬТУРА В ЖИЗНИ ЧЕЛОВЕКА"
 SECTIONS = [SECTION1_NAME, SECTION2_NAME, SECTION3_NAME]
-detector = is_dirt()
 
 
 def read_file(filename):
@@ -151,9 +149,6 @@ def get_text_messages(message):
         real(message)
     elif text in ["команды", "команда", "rjvfyls", "rjvfylf"]:
         commands(message)
-    elif detector(text):
-        bot.send_photo(message.chat.id, "https://i.pinimg.com/originals/19/14/65/191465a96c23fb43347e5bad7327645b.jpg",
-                       reply_markup=work_grid)
     elif text == "теория":
         theory(message)
     elif text == "произведения":
