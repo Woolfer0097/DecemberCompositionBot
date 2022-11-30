@@ -7,7 +7,6 @@ from dirt_tongue import is_dirt
 from datetime import datetime
 import docx
 from docx2pdf import convert
-import pythoncom
 
 
 DATA_DIRECTORY = "./data/"
@@ -109,7 +108,6 @@ def real(message):
 
     # Создание PDF-файла
     if not is_unusual_variant:
-        pythoncom.CoInitializeEx(0)
         doc = docx.Document(DATA_DIRECTORY + "Blank.docx")
         table = doc.tables[0]
         for i in range(len(output_message)):
